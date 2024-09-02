@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const postRoutes = require("./routes/post.routes.js");
+const notificationRoutes = require("./routes/notification.routes.js");
+
 const { v2: cloudinary } = require("cloudinary");
 
 const connectMongoDB = require("./db/connectMongoDB");
@@ -25,6 +27,8 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/notifications", notificationRoutes);
+
 app.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
   connectMongoDB();
